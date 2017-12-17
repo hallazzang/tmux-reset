@@ -27,7 +27,7 @@ You can rename it to whatever you want. Even the file extension isn't important.
 you don't need to kill your tmux server and restart the server to
 reset the other options to the default.
 
-## Installation Script
+### Installation Script
 
 Here is a shorthand for the manual installation above:
 ```bash
