@@ -7,7 +7,7 @@ Just put `source-file /path/to/tmux-reset` at the top of your `.tmux.conf`.
 
 tmux-reset is very similar to `reset.css` or `normalize.css`.
 It unsets tmux options to their defaults and unbinds all of the bound keys,
-and then applies the [default key bindings](default-key-bindings).
+and then applies the [default key bindings][default-key-bindings].
 After that, you are free to change options you'd like to.
 
 ## Installation
@@ -32,5 +32,9 @@ Here is a shorthand for the manual installation above:
 curl -Lo ~/.tmux/reset --create-dirs \
     https://raw.githubusercontent.com/hallazzang/tmux-reset/master/tmux-reset
 ```
+
+Actually, it doesn't do any 'installation' stuffs. It just downloads the file
+into `~/.tmux/reset`. You still have to put `source-file ~/.tmux/reset` at
+the top of your `.tmux.conf`.
 
 [default-key-bindings]: https://github.com/tmux/tmux/blob/2.6/key-bindings.c#L158-L385
