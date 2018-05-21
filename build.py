@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import os
+import argparse
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -111,11 +112,11 @@ initial_key_bindings = (
     "bind '\"' split-window",
     "bind '#' list-buffers",
     "bind '$' command-prompt -I'#S' \"rename-session '%%'\"",
-    "bind % split-window -h",
-    "bind & confirm-before -p\"kill-window #W? (y/n)\" kill-window",
+    "bind \"%\" split-window -h",
+    "bind \"&\" confirm-before -p\"kill-window #W? (y/n)\" kill-window",
     "bind \"'\" command-prompt -pindex \"select-window -t ':%%'\"",
-    "bind ( switch-client -p",
-    "bind ) switch-client -n",
+    "bind \"(\" switch-client -p",
+    "bind \")\" switch-client -n",
     "bind , command-prompt -I'#W' \"rename-window '%%'\"",
     "bind - delete-buffer",
     "bind . command-prompt \"move-window -t '%%'\"",
@@ -154,8 +155,8 @@ initial_key_bindings = (
     "bind w choose-tree -w",
     "bind x confirm-before -p\"kill-pane #P? (y/n)\" kill-pane",
     "bind z resize-pane -Z",
-    "bind { swap-pane -U",
-    "bind } swap-pane -D",
+    "bind \"{\" swap-pane -U",
+    "bind \"}\" swap-pane -D",
     "bind '~' show-messages",
     "bind PPage copy-mode -u",
     "bind -r Up select-pane -U",
@@ -237,8 +238,8 @@ initial_key_bindings = (
     "bind -Tcopy-mode M-7 command-prompt -Np'(repeat)' -I7 'send -N \"%%%\"'",
     "bind -Tcopy-mode M-8 command-prompt -Np'(repeat)' -I8 'send -N \"%%%\"'",
     "bind -Tcopy-mode M-9 command-prompt -Np'(repeat)' -I9 'send -N \"%%%\"'",
-    "bind -Tcopy-mode M-< send -X history-top",
-    "bind -Tcopy-mode M-> send -X history-bottom",
+    "bind -Tcopy-mode \"M-<\" send -X history-top",
+    "bind -Tcopy-mode \"M->\" send -X history-bottom",
     "bind -Tcopy-mode M-R send -X top-line",
     "bind -Tcopy-mode M-b send -X previous-word",
     "bind -Tcopy-mode M-f send -X next-word-end",
@@ -246,8 +247,8 @@ initial_key_bindings = (
     "bind -Tcopy-mode M-r send -X middle-line",
     "bind -Tcopy-mode M-v send -X page-up",
     "bind -Tcopy-mode M-w send -X copy-selection-and-cancel",
-    "bind -Tcopy-mode M-{ send -X previous-paragraph",
-    "bind -Tcopy-mode M-} send -X next-paragraph",
+    "bind -Tcopy-mode \"M-{\" send -X previous-paragraph",
+    "bind -Tcopy-mode \"M-}\" send -X next-paragraph",
     "bind -Tcopy-mode M-Up send -X halfpage-up",
     "bind -Tcopy-mode M-Down send -X halfpage-down",
     "bind -Tcopy-mode C-Up send -X scroll-up",
@@ -296,7 +297,7 @@ initial_key_bindings = (
     "bind -Tcopy-mode-vi T command-prompt -1p'(jump to backward)' 'send -X jump-to-backward \"%%%\"'",
     "bind -Tcopy-mode-vi V send -X select-line",
     "bind -Tcopy-mode-vi W send -X next-space",
-    "bind -Tcopy-mode-vi ^ send -X back-to-indentation",
+    "bind -Tcopy-mode-vi \"^\" send -X back-to-indentation",
     "bind -Tcopy-mode-vi b send -X previous-word",
     "bind -Tcopy-mode-vi e send -X next-word-end",
     "bind -Tcopy-mode-vi f command-prompt -1p'(jump forward)' 'send -X jump-forward \"%%%\"'",
@@ -311,8 +312,8 @@ initial_key_bindings = (
     "bind -Tcopy-mode-vi t command-prompt -1p'(jump to forward)' 'send -X jump-to-forward \"%%%\"'",
     "bind -Tcopy-mode-vi v send -X rectangle-toggle",
     "bind -Tcopy-mode-vi w send -X next-word",
-    "bind -Tcopy-mode-vi { send -X previous-paragraph",
-    "bind -Tcopy-mode-vi } send -X next-paragraph",
+    "bind -Tcopy-mode-vi \"{\" send -X previous-paragraph",
+    "bind -Tcopy-mode-vi \"}\" send -X next-paragraph",
     "bind -Tcopy-mode-vi MouseDown1Pane select-pane",
     "bind -Tcopy-mode-vi MouseDrag1Pane select-pane\\; send -X begin-selection",
     "bind -Tcopy-mode-vi MouseDragEnd1Pane send -X copy-selection-and-cancel",
@@ -332,14 +333,34 @@ initial_key_bindings = (
 )
 
 if __name__ == '__main__':
-    with open(os.path.join(script_dir, 'tmux-reset'), 'w') as f:
+    prefix = ''
+    filename = 'tmux-reset'
+
+    parser = argparse.ArgumentParser(description='Creates a tmux-reset config')
+    parser.add_argument('-t', '--tpm', action="store_true", help='build for .tmux file for TPM compatibility')
+    args = parser.parse_args()
+
+    if args.tpm:
+        prefix = 'tmux '
+        filename += '.tmux'
+        header = """#!/usr/bin/env bash
+
+CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+"""
+
+    with open(os.path.join(script_dir, filename), 'w') as f:
+        if args.tpm:
+            f.write('%s\n' % header)
+
         for option_name in session_options:
-            f.write('set-option -ug %s\n' % option_name)
+            f.write('%sset-option -ug %s\n' % (prefix, option_name))
 
         for option_name in window_options:
-            f.write('set-window-option -ug %s\n' % option_name)
+            f.write('%sset-window-option -ug %s\n' % (prefix, option_name))
 
-        f.write('unbind-key -a\n')
+        f.write('%sunbind-key -a\n' % prefix)
 
         for binding in initial_key_bindings:
-            f.write('%s\n' % binding)
+            if args.tpm:
+                binding = binding.replace(" \\; ", " \"\\;\" ")
+            f.write('%s%s\n' % (prefix, binding))
