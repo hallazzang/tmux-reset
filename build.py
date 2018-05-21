@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import os
+import argparse
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
@@ -332,14 +333,32 @@ initial_key_bindings = (
 )
 
 if __name__ == '__main__':
-    with open(os.path.join(script_dir, 'tmux-reset'), 'w') as f:
+    prefix = ''
+    filename = 'tmux-reset'
+
+    parser = argparse.ArgumentParser(description='Creates a tmux-reset config')
+    parser.add_argument('-t', '--tpm', action="store_true", help='build for .tmux file for TPM compatibility')
+    args = parser.parse_args()
+
+    if args.tpm:
+        prefix = 'tmux '
+        filename += '.tmux'
+        header = """#!/usr/bin/env bash
+
+CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+        """
+
+    with open(os.path.join(script_dir, filename), 'w') as f:
+        if args.tpm:
+            f.write('%s\n' % header)
+
         for option_name in session_options:
-            f.write('set-option -ug %s\n' % option_name)
+            f.write('%sset-option -ug %s\n' % (prefix, option_name))
 
         for option_name in window_options:
-            f.write('set-window-option -ug %s\n' % option_name)
+            f.write('%sset-window-option -ug %s\n' % (prefix, option_name))
 
-        f.write('unbind-key -a\n')
+        f.write('%sunbind-key -a\n' % prefix)
 
         for binding in initial_key_bindings:
-            f.write('%s\n' % binding)
+            f.write('%s%s\n' % (prefix, binding))
