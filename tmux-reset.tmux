@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-        
+
 tmux set-option -ug buffer-limit
 tmux set-option -ug default-terminal
 tmux set-option -ug escape-time
@@ -95,11 +95,11 @@ tmux bind ! break-pane
 tmux bind '"' split-window
 tmux bind '#' list-buffers
 tmux bind '$' command-prompt -I'#S' "rename-session '%%'"
-tmux bind % split-window -h
-tmux bind & confirm-before -p"kill-window #W? (y/n)" kill-window
+tmux bind "%" split-window -h
+tmux bind "&" confirm-before -p"kill-window #W? (y/n)" kill-window
 tmux bind "'" command-prompt -pindex "select-window -t ':%%'"
-tmux bind ( switch-client -p
-tmux bind ) switch-client -n
+tmux bind "(" switch-client -p
+tmux bind ")" switch-client -n
 tmux bind , command-prompt -I'#W' "rename-window '%%'"
 tmux bind - delete-buffer
 tmux bind . command-prompt "move-window -t '%%'"
@@ -114,7 +114,7 @@ tmux bind 7 select-window -t:=7
 tmux bind 8 select-window -t:=8
 tmux bind 9 select-window -t:=9
 tmux bind : command-prompt
-tmux bind \; last-pane
+tmux bind "\;" last-pane
 tmux bind = choose-buffer
 tmux bind ? list-keys
 tmux bind D choose-client
@@ -138,8 +138,8 @@ tmux bind t clock-mode
 tmux bind w choose-tree -w
 tmux bind x confirm-before -p"kill-pane #P? (y/n)" kill-pane
 tmux bind z resize-pane -Z
-tmux bind { swap-pane -U
-tmux bind } swap-pane -D
+tmux bind "{" swap-pane -U
+tmux bind "}" swap-pane -D
 tmux bind '~' show-messages
 tmux bind PPage copy-mode -u
 tmux bind -r Up select-pane -U
@@ -187,7 +187,7 @@ tmux bind -Tcopy-mode C-w send -X copy-selection-and-cancel
 tmux bind -Tcopy-mode Escape send -X cancel
 tmux bind -Tcopy-mode Space send -X page-down
 tmux bind -Tcopy-mode , send -X jump-reverse
-tmux bind -Tcopy-mode \; send -X jump-again
+tmux bind -Tcopy-mode "\;" send -X jump-again
 tmux bind -Tcopy-mode F command-prompt -1p'(jump backward)' 'send -X jump-backward "%%%"'
 tmux bind -Tcopy-mode N send -X search-reverse
 tmux bind -Tcopy-mode R send -X rectangle-toggle
@@ -221,8 +221,8 @@ tmux bind -Tcopy-mode M-6 command-prompt -Np'(repeat)' -I6 'send -N "%%%"'
 tmux bind -Tcopy-mode M-7 command-prompt -Np'(repeat)' -I7 'send -N "%%%"'
 tmux bind -Tcopy-mode M-8 command-prompt -Np'(repeat)' -I8 'send -N "%%%"'
 tmux bind -Tcopy-mode M-9 command-prompt -Np'(repeat)' -I9 'send -N "%%%"'
-tmux bind -Tcopy-mode M-< send -X history-top
-tmux bind -Tcopy-mode M-> send -X history-bottom
+tmux bind -Tcopy-mode "M-<" send -X history-top
+tmux bind -Tcopy-mode "M->" send -X history-bottom
 tmux bind -Tcopy-mode M-R send -X top-line
 tmux bind -Tcopy-mode M-b send -X previous-word
 tmux bind -Tcopy-mode M-f send -X next-word-end
@@ -230,8 +230,8 @@ tmux bind -Tcopy-mode M-m send -X back-to-indentation
 tmux bind -Tcopy-mode M-r send -X middle-line
 tmux bind -Tcopy-mode M-v send -X page-up
 tmux bind -Tcopy-mode M-w send -X copy-selection-and-cancel
-tmux bind -Tcopy-mode M-{ send -X previous-paragraph
-tmux bind -Tcopy-mode M-} send -X next-paragraph
+tmux bind -Tcopy-mode "M-{" send -X previous-paragraph
+tmux bind -Tcopy-mode "M-}" send -X next-paragraph
 tmux bind -Tcopy-mode M-Up send -X halfpage-up
 tmux bind -Tcopy-mode M-Down send -X halfpage-down
 tmux bind -Tcopy-mode C-Up send -X scroll-up
@@ -263,7 +263,7 @@ tmux bind -Tcopy-mode-vi 7 command-prompt -Np'(repeat)' -I7 'send -N "%%%"'
 tmux bind -Tcopy-mode-vi 8 command-prompt -Np'(repeat)' -I8 'send -N "%%%"'
 tmux bind -Tcopy-mode-vi 9 command-prompt -Np'(repeat)' -I9 'send -N "%%%"'
 tmux bind -Tcopy-mode-vi : command-prompt -p'(goto line)' 'send -X goto-line "%%%"'
-tmux bind -Tcopy-mode-vi \; send -X jump-again
+tmux bind -Tcopy-mode-vi "\;" send -X jump-again
 tmux bind -Tcopy-mode-vi ? command-prompt -p'(search up)' 'send -X search-backward "%%%"'
 tmux bind -Tcopy-mode-vi A send -X append-selection-and-cancel
 tmux bind -Tcopy-mode-vi B send -X previous-space
@@ -280,7 +280,7 @@ tmux bind -Tcopy-mode-vi N send -X search-reverse
 tmux bind -Tcopy-mode-vi T command-prompt -1p'(jump to backward)' 'send -X jump-to-backward "%%%"'
 tmux bind -Tcopy-mode-vi V send -X select-line
 tmux bind -Tcopy-mode-vi W send -X next-space
-tmux bind -Tcopy-mode-vi ^ send -X back-to-indentation
+tmux bind -Tcopy-mode-vi "^" send -X back-to-indentation
 tmux bind -Tcopy-mode-vi b send -X previous-word
 tmux bind -Tcopy-mode-vi e send -X next-word-end
 tmux bind -Tcopy-mode-vi f command-prompt -1p'(jump forward)' 'send -X jump-forward "%%%"'
@@ -295,8 +295,8 @@ tmux bind -Tcopy-mode-vi q send -X cancel
 tmux bind -Tcopy-mode-vi t command-prompt -1p'(jump to forward)' 'send -X jump-to-forward "%%%"'
 tmux bind -Tcopy-mode-vi v send -X rectangle-toggle
 tmux bind -Tcopy-mode-vi w send -X next-word
-tmux bind -Tcopy-mode-vi { send -X previous-paragraph
-tmux bind -Tcopy-mode-vi } send -X next-paragraph
+tmux bind -Tcopy-mode-vi "{" send -X previous-paragraph
+tmux bind -Tcopy-mode-vi "}" send -X next-paragraph
 tmux bind -Tcopy-mode-vi MouseDown1Pane select-pane
 tmux bind -Tcopy-mode-vi MouseDrag1Pane select-pane\; send -X begin-selection
 tmux bind -Tcopy-mode-vi MouseDragEnd1Pane send -X copy-selection-and-cancel
