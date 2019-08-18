@@ -3,89 +3,179 @@
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
 tmux set-option -ug buffer-limit
+tmux set-option -u buffer-limit
 tmux set-option -ug default-terminal
+tmux set-option -u default-terminal
 tmux set-option -ug escape-time
+tmux set-option -u escape-time
+tmux set-option -ug exit-empty
+tmux set-option -u exit-empty
 tmux set-option -ug exit-unattached
+tmux set-option -u exit-unattached
 tmux set-option -ug focus-events
+tmux set-option -u focus-events
 tmux set-option -ug history-file
+tmux set-option -u history-file
 tmux set-option -ug message-limit
+tmux set-option -u message-limit
 tmux set-option -ug set-clipboard
+tmux set-option -u set-clipboard
 tmux set-option -ug activity-action
+tmux set-option -u activity-action
 tmux set-option -ug assume-paste-time
+tmux set-option -u assume-paste-time
 tmux set-option -ug base-index
+tmux set-option -u base-index
 tmux set-option -ug bell-action
+tmux set-option -u bell-action
 tmux set-option -ug default-command
+tmux set-option -u default-command
+tmux set-option -ug default-size
+tmux set-option -u default-size
 tmux set-option -ug destroy-unattached
+tmux set-option -u destroy-unattached
 tmux set-option -ug detach-on-destroy
+tmux set-option -u detach-on-destroy
 tmux set-option -ug display-panes-active-colour
+tmux set-option -u display-panes-active-colour
 tmux set-option -ug display-panes-colour
+tmux set-option -u display-panes-colour
 tmux set-option -ug display-panes-time
+tmux set-option -u display-panes-time
 tmux set-option -ug display-time
+tmux set-option -u display-time
 tmux set-option -ug history-limit
+tmux set-option -u history-limit
 tmux set-option -ug key-table
+tmux set-option -u key-table
 tmux set-option -ug lock-after-time
+tmux set-option -u lock-after-time
 tmux set-option -ug lock-command
+tmux set-option -u lock-command
 tmux set-option -ug message-command-style
+tmux set-option -u message-command-style
 tmux set-option -ug message-style
+tmux set-option -u message-style
 tmux set-option -ug mouse
+tmux set-option -u mouse
 tmux set-option -ug prefix
+tmux set-option -u prefix
 tmux set-option -ug prefix2
+tmux set-option -u prefix2
 tmux set-option -ug renumber-windows
+tmux set-option -u renumber-windows
 tmux set-option -ug repeat-time
+tmux set-option -u repeat-time
 tmux set-option -ug set-titles
+tmux set-option -u set-titles
 tmux set-option -ug set-titles-string
+tmux set-option -u set-titles-string
 tmux set-option -ug silence-action
+tmux set-option -u silence-action
 tmux set-option -ug status
+tmux set-option -u status
 tmux set-option -ug status-interval
+tmux set-option -u status-interval
 tmux set-option -ug status-justify
+tmux set-option -u status-justify
 tmux set-option -ug status-keys
+tmux set-option -u status-keys
 tmux set-option -ug status-left
+tmux set-option -u status-left
 tmux set-option -ug status-left-length
+tmux set-option -u status-left-length
 tmux set-option -ug status-left-style
+tmux set-option -u status-left-style
 tmux set-option -ug status-position
+tmux set-option -u status-position
 tmux set-option -ug status-right
+tmux set-option -u status-right
 tmux set-option -ug status-right-length
+tmux set-option -u status-right-length
 tmux set-option -ug status-right-style
+tmux set-option -u status-right-style
+tmux set-option -ug status-style
+tmux set-option -u status-style
 tmux set-option -ug visual-activity
+tmux set-option -u visual-activity
 tmux set-option -ug visual-bell
+tmux set-option -u visual-bell
 tmux set-option -ug visual-silence
+tmux set-option -u visual-silence
 tmux set-option -ug word-separators
-tmux set-window-option -ug aggressive-resize
-tmux set-window-option -ug allow-rename
-tmux set-window-option -ug alternate-screen
-tmux set-window-option -ug automatic-rename
-tmux set-window-option -ug automatic-rename-format
-tmux set-window-option -ug clock-mode-colour
-tmux set-window-option -ug clock-mode-style
-tmux set-window-option -ug force-height
-tmux set-window-option -ug force-width
-tmux set-window-option -ug main-pane-height
-tmux set-window-option -ug main-pane-width
-tmux set-window-option -ug mode-style
-tmux set-window-option -ug monitor-activity
-tmux set-window-option -ug monitor-bell
-tmux set-window-option -ug monitor-silence
-tmux set-window-option -ug other-pane-height
-tmux set-window-option -ug other-pane-width
-tmux set-window-option -ug pane-active-border-style
-tmux set-window-option -ug pane-base-index
-tmux set-window-option -ug pane-border-format
-tmux set-window-option -ug pane-border-status
-tmux set-window-option -ug pane-border-style
-tmux set-window-option -ug remain-on-exit
-tmux set-window-option -ug synchronize-panes
-tmux set-window-option -ug window-active-style
-tmux set-window-option -ug window-status-activity-style
-tmux set-window-option -ug window-status-bell-style
-tmux set-window-option -ug window-status-current-format
-tmux set-window-option -ug window-status-current-style
-tmux set-window-option -ug window-status-format
-tmux set-window-option -ug window-status-last-style
-tmux set-window-option -ug window-status-separator
-tmux set-window-option -ug window-status-style
-tmux set-window-option -ug window-style
-tmux set-window-option -ug wrap-search
-tmux set-window-option -ug xterm-keys
+tmux set-option -u word-separators
+tmux set-option -ug aggressive-resize
+tmux set-option -u aggressive-resize
+tmux set-option -ug automatic-rename
+tmux set-option -u automatic-rename
+tmux set-option -ug automatic-rename-format
+tmux set-option -u automatic-rename-format
+tmux set-option -ug clock-mode-colour
+tmux set-option -u clock-mode-colour
+tmux set-option -ug clock-mode-style
+tmux set-option -u clock-mode-style
+tmux set-option -ug main-pane-height
+tmux set-option -u main-pane-height
+tmux set-option -ug main-pane-width
+tmux set-option -u main-pane-width
+tmux set-option -ug mode-keys
+tmux set-option -u mode-keys
+tmux set-option -ug mode-style
+tmux set-option -u mode-style
+tmux set-option -ug monitor-activity
+tmux set-option -u monitor-activity
+tmux set-option -ug monitor-bell
+tmux set-option -u monitor-bell
+tmux set-option -ug monitor-silence
+tmux set-option -u monitor-silence
+tmux set-option -ug other-pane-height
+tmux set-option -u other-pane-height
+tmux set-option -ug other-pane-width
+tmux set-option -u other-pane-width
+tmux set-option -ug pane-active-border-style
+tmux set-option -u pane-active-border-style
+tmux set-option -ug pane-base-index
+tmux set-option -u pane-base-index
+tmux set-option -ug pane-border-format
+tmux set-option -u pane-border-format
+tmux set-option -ug pane-border-status
+tmux set-option -u pane-border-status
+tmux set-option -ug pane-border-style
+tmux set-option -u pane-border-style
+tmux set-option -ug synchronize-panes
+tmux set-option -u synchronize-panes
+tmux set-option -ug window-status-activity-style
+tmux set-option -u window-status-activity-style
+tmux set-option -ug window-status-bell-style
+tmux set-option -u window-status-bell-style
+tmux set-option -ug window-status-current-format
+tmux set-option -u window-status-current-format
+tmux set-option -ug window-status-current-style
+tmux set-option -u window-status-current-style
+tmux set-option -ug window-status-format
+tmux set-option -u window-status-format
+tmux set-option -ug window-status-last-style
+tmux set-option -u window-status-last-style
+tmux set-option -ug window-status-separator
+tmux set-option -u window-status-separator
+tmux set-option -ug window-status-style
+tmux set-option -u window-status-style
+tmux set-option -ug window-size
+tmux set-option -u window-size
+tmux set-option -ug wrap-search
+tmux set-option -u wrap-search
+tmux set-option -ug xterm-keys
+tmux set-option -u xterm-keys
+tmux set-option -ug allow-rename
+tmux set-option -u allow-rename
+tmux set-option -ug alternate-screen
+tmux set-option -u alternate-screen
+tmux set-option -ug remain-on-exit
+tmux set-option -u remain-on-exit
+tmux set-option -ug window-active-style
+tmux set-option -u window-active-style
+tmux set-option -ug window-style
+tmux set-option -u window-style
 tmux unbind-key -a
 tmux bind C-b send-prefix
 tmux bind C-o rotate-window
@@ -94,13 +184,13 @@ tmux bind Space next-layout
 tmux bind ! break-pane
 tmux bind '"' split-window
 tmux bind '#' list-buffers
-tmux bind '$' command-prompt -I'#S' "rename-session '%%'"
-tmux bind "%" split-window -h
-tmux bind "&" confirm-before -p"kill-window #W? (y/n)" kill-window
+tmux bind '$' command-prompt -I'#S' "rename-session -- '%%'"
+tmux bind % split-window -h
+tmux bind & confirm-before -p"kill-window #W? (y/n)" kill-window
 tmux bind "'" command-prompt -pindex "select-window -t ':%%'"
-tmux bind "(" switch-client -p
-tmux bind ")" switch-client -n
-tmux bind , command-prompt -I'#W' "rename-window '%%'"
+tmux bind ( switch-client -p
+tmux bind ) switch-client -n
+tmux bind , command-prompt -I'#W' "rename-window -- '%%'"
 tmux bind - delete-buffer
 tmux bind . command-prompt "move-window -t '%%'"
 tmux bind 0 select-window -t:=0
@@ -115,16 +205,17 @@ tmux bind 8 select-window -t:=8
 tmux bind 9 select-window -t:=9
 tmux bind : command-prompt
 tmux bind "\;" last-pane
-tmux bind = choose-buffer
+tmux bind = choose-buffer -Z
 tmux bind ? list-keys
-tmux bind D choose-client
+tmux bind D choose-client -Z
+tmux bind E select-layout -E
 tmux bind L switch-client -l
 tmux bind M select-pane -M
 tmux bind [ copy-mode
 tmux bind ] paste-buffer
 tmux bind c new-window
 tmux bind d detach-client
-tmux bind f command-prompt "find-window '%%'"
+tmux bind f command-prompt "find-window -Z -- '%%'"
 tmux bind i display-message
 tmux bind l last-window
 tmux bind m select-pane -m
@@ -133,13 +224,13 @@ tmux bind o select-pane -t:.+
 tmux bind p previous-window
 tmux bind q display-panes
 tmux bind r refresh-client
-tmux bind s choose-tree -s
+tmux bind s choose-tree -Zs
 tmux bind t clock-mode
-tmux bind w choose-tree -w
+tmux bind w choose-tree -Zw
 tmux bind x confirm-before -p"kill-pane #P? (y/n)" kill-pane
 tmux bind z resize-pane -Z
-tmux bind "{" swap-pane -U
-tmux bind "}" swap-pane -D
+tmux bind { swap-pane -U
+tmux bind } swap-pane -D
 tmux bind '~' show-messages
 tmux bind PPage copy-mode -u
 tmux bind -r Up select-pane -U
@@ -154,6 +245,11 @@ tmux bind M-5 select-layout tiled
 tmux bind M-n next-window -a
 tmux bind M-o rotate-window -D
 tmux bind M-p previous-window -a
+tmux bind -r S-Up refresh-client -U 10
+tmux bind -r S-Down refresh-client -D 10
+tmux bind -r S-Left refresh-client -L 10
+tmux bind -r S-Right refresh-client -R 10
+tmux bind -r DC refresh-client -c
 tmux bind -r M-Up resize-pane -U 5
 tmux bind -r M-Down resize-pane -D 5
 tmux bind -r M-Left resize-pane -L 5
@@ -221,8 +317,8 @@ tmux bind -Tcopy-mode M-6 command-prompt -Np'(repeat)' -I6 'send -N "%%%"'
 tmux bind -Tcopy-mode M-7 command-prompt -Np'(repeat)' -I7 'send -N "%%%"'
 tmux bind -Tcopy-mode M-8 command-prompt -Np'(repeat)' -I8 'send -N "%%%"'
 tmux bind -Tcopy-mode M-9 command-prompt -Np'(repeat)' -I9 'send -N "%%%"'
-tmux bind -Tcopy-mode "M-<" send -X history-top
-tmux bind -Tcopy-mode "M->" send -X history-bottom
+tmux bind -Tcopy-mode M-< send -X history-top
+tmux bind -Tcopy-mode M-> send -X history-bottom
 tmux bind -Tcopy-mode M-R send -X top-line
 tmux bind -Tcopy-mode M-b send -X previous-word
 tmux bind -Tcopy-mode M-f send -X next-word-end
@@ -230,8 +326,8 @@ tmux bind -Tcopy-mode M-m send -X back-to-indentation
 tmux bind -Tcopy-mode M-r send -X middle-line
 tmux bind -Tcopy-mode M-v send -X page-up
 tmux bind -Tcopy-mode M-w send -X copy-selection-and-cancel
-tmux bind -Tcopy-mode "M-{" send -X previous-paragraph
-tmux bind -Tcopy-mode "M-}" send -X next-paragraph
+tmux bind -Tcopy-mode M-{ send -X previous-paragraph
+tmux bind -Tcopy-mode M-} send -X next-paragraph
 tmux bind -Tcopy-mode M-Up send -X halfpage-up
 tmux bind -Tcopy-mode M-Down send -X halfpage-down
 tmux bind -Tcopy-mode C-Up send -X scroll-up
@@ -280,7 +376,7 @@ tmux bind -Tcopy-mode-vi N send -X search-reverse
 tmux bind -Tcopy-mode-vi T command-prompt -1p'(jump to backward)' 'send -X jump-to-backward "%%%"'
 tmux bind -Tcopy-mode-vi V send -X select-line
 tmux bind -Tcopy-mode-vi W send -X next-space
-tmux bind -Tcopy-mode-vi "^" send -X back-to-indentation
+tmux bind -Tcopy-mode-vi ^ send -X back-to-indentation
 tmux bind -Tcopy-mode-vi b send -X previous-word
 tmux bind -Tcopy-mode-vi e send -X next-word-end
 tmux bind -Tcopy-mode-vi f command-prompt -1p'(jump forward)' 'send -X jump-forward "%%%"'
@@ -295,8 +391,8 @@ tmux bind -Tcopy-mode-vi q send -X cancel
 tmux bind -Tcopy-mode-vi t command-prompt -1p'(jump to forward)' 'send -X jump-to-forward "%%%"'
 tmux bind -Tcopy-mode-vi v send -X rectangle-toggle
 tmux bind -Tcopy-mode-vi w send -X next-word
-tmux bind -Tcopy-mode-vi "{" send -X previous-paragraph
-tmux bind -Tcopy-mode-vi "}" send -X next-paragraph
+tmux bind -Tcopy-mode-vi { send -X previous-paragraph
+tmux bind -Tcopy-mode-vi } send -X next-paragraph
 tmux bind -Tcopy-mode-vi MouseDown1Pane select-pane
 tmux bind -Tcopy-mode-vi MouseDrag1Pane select-pane\; send -X begin-selection
 tmux bind -Tcopy-mode-vi MouseDragEnd1Pane send -X copy-selection-and-cancel
