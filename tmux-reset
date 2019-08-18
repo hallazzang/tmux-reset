@@ -1,87 +1,177 @@
 set-option -ug buffer-limit
+set-option -u buffer-limit
 set-option -ug default-terminal
+set-option -u default-terminal
 set-option -ug escape-time
+set-option -u escape-time
+set-option -ug exit-empty
+set-option -u exit-empty
 set-option -ug exit-unattached
+set-option -u exit-unattached
 set-option -ug focus-events
+set-option -u focus-events
 set-option -ug history-file
+set-option -u history-file
 set-option -ug message-limit
+set-option -u message-limit
 set-option -ug set-clipboard
+set-option -u set-clipboard
 set-option -ug activity-action
+set-option -u activity-action
 set-option -ug assume-paste-time
+set-option -u assume-paste-time
 set-option -ug base-index
+set-option -u base-index
 set-option -ug bell-action
+set-option -u bell-action
 set-option -ug default-command
+set-option -u default-command
+set-option -ug default-size
+set-option -u default-size
 set-option -ug destroy-unattached
+set-option -u destroy-unattached
 set-option -ug detach-on-destroy
+set-option -u detach-on-destroy
 set-option -ug display-panes-active-colour
+set-option -u display-panes-active-colour
 set-option -ug display-panes-colour
+set-option -u display-panes-colour
 set-option -ug display-panes-time
+set-option -u display-panes-time
 set-option -ug display-time
+set-option -u display-time
 set-option -ug history-limit
+set-option -u history-limit
 set-option -ug key-table
+set-option -u key-table
 set-option -ug lock-after-time
+set-option -u lock-after-time
 set-option -ug lock-command
+set-option -u lock-command
 set-option -ug message-command-style
+set-option -u message-command-style
 set-option -ug message-style
+set-option -u message-style
 set-option -ug mouse
+set-option -u mouse
 set-option -ug prefix
+set-option -u prefix
 set-option -ug prefix2
+set-option -u prefix2
 set-option -ug renumber-windows
+set-option -u renumber-windows
 set-option -ug repeat-time
+set-option -u repeat-time
 set-option -ug set-titles
+set-option -u set-titles
 set-option -ug set-titles-string
+set-option -u set-titles-string
 set-option -ug silence-action
+set-option -u silence-action
 set-option -ug status
+set-option -u status
 set-option -ug status-interval
+set-option -u status-interval
 set-option -ug status-justify
+set-option -u status-justify
 set-option -ug status-keys
+set-option -u status-keys
 set-option -ug status-left
+set-option -u status-left
 set-option -ug status-left-length
+set-option -u status-left-length
 set-option -ug status-left-style
+set-option -u status-left-style
 set-option -ug status-position
+set-option -u status-position
 set-option -ug status-right
+set-option -u status-right
 set-option -ug status-right-length
+set-option -u status-right-length
 set-option -ug status-right-style
+set-option -u status-right-style
+set-option -ug status-style
+set-option -u status-style
 set-option -ug visual-activity
+set-option -u visual-activity
 set-option -ug visual-bell
+set-option -u visual-bell
 set-option -ug visual-silence
+set-option -u visual-silence
 set-option -ug word-separators
-set-window-option -ug aggressive-resize
-set-window-option -ug allow-rename
-set-window-option -ug alternate-screen
-set-window-option -ug automatic-rename
-set-window-option -ug automatic-rename-format
-set-window-option -ug clock-mode-colour
-set-window-option -ug clock-mode-style
-set-window-option -ug force-height
-set-window-option -ug force-width
-set-window-option -ug main-pane-height
-set-window-option -ug main-pane-width
-set-window-option -ug mode-style
-set-window-option -ug monitor-activity
-set-window-option -ug monitor-bell
-set-window-option -ug monitor-silence
-set-window-option -ug other-pane-height
-set-window-option -ug other-pane-width
-set-window-option -ug pane-active-border-style
-set-window-option -ug pane-base-index
-set-window-option -ug pane-border-format
-set-window-option -ug pane-border-status
-set-window-option -ug pane-border-style
-set-window-option -ug remain-on-exit
-set-window-option -ug synchronize-panes
-set-window-option -ug window-active-style
-set-window-option -ug window-status-activity-style
-set-window-option -ug window-status-bell-style
-set-window-option -ug window-status-current-format
-set-window-option -ug window-status-current-style
-set-window-option -ug window-status-format
-set-window-option -ug window-status-last-style
-set-window-option -ug window-status-separator
-set-window-option -ug window-status-style
-set-window-option -ug window-style
-set-window-option -ug wrap-search
-set-window-option -ug xterm-keys
+set-option -u word-separators
+set-option -ug aggressive-resize
+set-option -u aggressive-resize
+set-option -ug automatic-rename
+set-option -u automatic-rename
+set-option -ug automatic-rename-format
+set-option -u automatic-rename-format
+set-option -ug clock-mode-colour
+set-option -u clock-mode-colour
+set-option -ug clock-mode-style
+set-option -u clock-mode-style
+set-option -ug main-pane-height
+set-option -u main-pane-height
+set-option -ug main-pane-width
+set-option -u main-pane-width
+set-option -ug mode-keys
+set-option -u mode-keys
+set-option -ug mode-style
+set-option -u mode-style
+set-option -ug monitor-activity
+set-option -u monitor-activity
+set-option -ug monitor-bell
+set-option -u monitor-bell
+set-option -ug monitor-silence
+set-option -u monitor-silence
+set-option -ug other-pane-height
+set-option -u other-pane-height
+set-option -ug other-pane-width
+set-option -u other-pane-width
+set-option -ug pane-active-border-style
+set-option -u pane-active-border-style
+set-option -ug pane-base-index
+set-option -u pane-base-index
+set-option -ug pane-border-format
+set-option -u pane-border-format
+set-option -ug pane-border-status
+set-option -u pane-border-status
+set-option -ug pane-border-style
+set-option -u pane-border-style
+set-option -ug synchronize-panes
+set-option -u synchronize-panes
+set-option -ug window-status-activity-style
+set-option -u window-status-activity-style
+set-option -ug window-status-bell-style
+set-option -u window-status-bell-style
+set-option -ug window-status-current-format
+set-option -u window-status-current-format
+set-option -ug window-status-current-style
+set-option -u window-status-current-style
+set-option -ug window-status-format
+set-option -u window-status-format
+set-option -ug window-status-last-style
+set-option -u window-status-last-style
+set-option -ug window-status-separator
+set-option -u window-status-separator
+set-option -ug window-status-style
+set-option -u window-status-style
+set-option -ug window-size
+set-option -u window-size
+set-option -ug wrap-search
+set-option -u wrap-search
+set-option -ug xterm-keys
+set-option -u xterm-keys
+set-option -ug allow-rename
+set-option -u allow-rename
+set-option -ug alternate-screen
+set-option -u alternate-screen
+set-option -ug remain-on-exit
+set-option -u remain-on-exit
+set-option -ug window-active-style
+set-option -u window-active-style
+set-option -ug window-style
+set-option -u window-style
 unbind-key -a
 bind C-b send-prefix
 bind C-o rotate-window
@@ -90,13 +180,13 @@ bind Space next-layout
 bind ! break-pane
 bind '"' split-window
 bind '#' list-buffers
-bind '$' command-prompt -I'#S' "rename-session '%%'"
-bind "%" split-window -h
-bind "&" confirm-before -p"kill-window #W? (y/n)" kill-window
+bind '$' command-prompt -I'#S' "rename-session -- '%%'"
+bind % split-window -h
+bind & confirm-before -p"kill-window #W? (y/n)" kill-window
 bind "'" command-prompt -pindex "select-window -t ':%%'"
-bind "(" switch-client -p
-bind ")" switch-client -n
-bind , command-prompt -I'#W' "rename-window '%%'"
+bind ( switch-client -p
+bind ) switch-client -n
+bind , command-prompt -I'#W' "rename-window -- '%%'"
 bind - delete-buffer
 bind . command-prompt "move-window -t '%%'"
 bind 0 select-window -t:=0
@@ -111,16 +201,17 @@ bind 8 select-window -t:=8
 bind 9 select-window -t:=9
 bind : command-prompt
 bind \; last-pane
-bind = choose-buffer
+bind = choose-buffer -Z
 bind ? list-keys
-bind D choose-client
+bind D choose-client -Z
+bind E select-layout -E
 bind L switch-client -l
 bind M select-pane -M
 bind [ copy-mode
 bind ] paste-buffer
 bind c new-window
 bind d detach-client
-bind f command-prompt "find-window '%%'"
+bind f command-prompt "find-window -Z -- '%%'"
 bind i display-message
 bind l last-window
 bind m select-pane -m
@@ -129,13 +220,13 @@ bind o select-pane -t:.+
 bind p previous-window
 bind q display-panes
 bind r refresh-client
-bind s choose-tree -s
+bind s choose-tree -Zs
 bind t clock-mode
-bind w choose-tree -w
+bind w choose-tree -Zw
 bind x confirm-before -p"kill-pane #P? (y/n)" kill-pane
 bind z resize-pane -Z
-bind "{" swap-pane -U
-bind "}" swap-pane -D
+bind { swap-pane -U
+bind } swap-pane -D
 bind '~' show-messages
 bind PPage copy-mode -u
 bind -r Up select-pane -U
@@ -150,6 +241,11 @@ bind M-5 select-layout tiled
 bind M-n next-window -a
 bind M-o rotate-window -D
 bind M-p previous-window -a
+bind -r S-Up refresh-client -U 10
+bind -r S-Down refresh-client -D 10
+bind -r S-Left refresh-client -L 10
+bind -r S-Right refresh-client -R 10
+bind -r DC refresh-client -c
 bind -r M-Up resize-pane -U 5
 bind -r M-Down resize-pane -D 5
 bind -r M-Left resize-pane -L 5
@@ -217,8 +313,8 @@ bind -Tcopy-mode M-6 command-prompt -Np'(repeat)' -I6 'send -N "%%%"'
 bind -Tcopy-mode M-7 command-prompt -Np'(repeat)' -I7 'send -N "%%%"'
 bind -Tcopy-mode M-8 command-prompt -Np'(repeat)' -I8 'send -N "%%%"'
 bind -Tcopy-mode M-9 command-prompt -Np'(repeat)' -I9 'send -N "%%%"'
-bind -Tcopy-mode "M-<" send -X history-top
-bind -Tcopy-mode "M->" send -X history-bottom
+bind -Tcopy-mode M-< send -X history-top
+bind -Tcopy-mode M-> send -X history-bottom
 bind -Tcopy-mode M-R send -X top-line
 bind -Tcopy-mode M-b send -X previous-word
 bind -Tcopy-mode M-f send -X next-word-end
@@ -226,8 +322,8 @@ bind -Tcopy-mode M-m send -X back-to-indentation
 bind -Tcopy-mode M-r send -X middle-line
 bind -Tcopy-mode M-v send -X page-up
 bind -Tcopy-mode M-w send -X copy-selection-and-cancel
-bind -Tcopy-mode "M-{" send -X previous-paragraph
-bind -Tcopy-mode "M-}" send -X next-paragraph
+bind -Tcopy-mode M-{ send -X previous-paragraph
+bind -Tcopy-mode M-} send -X next-paragraph
 bind -Tcopy-mode M-Up send -X halfpage-up
 bind -Tcopy-mode M-Down send -X halfpage-down
 bind -Tcopy-mode C-Up send -X scroll-up
@@ -276,7 +372,7 @@ bind -Tcopy-mode-vi N send -X search-reverse
 bind -Tcopy-mode-vi T command-prompt -1p'(jump to backward)' 'send -X jump-to-backward "%%%"'
 bind -Tcopy-mode-vi V send -X select-line
 bind -Tcopy-mode-vi W send -X next-space
-bind -Tcopy-mode-vi "^" send -X back-to-indentation
+bind -Tcopy-mode-vi ^ send -X back-to-indentation
 bind -Tcopy-mode-vi b send -X previous-word
 bind -Tcopy-mode-vi e send -X next-word-end
 bind -Tcopy-mode-vi f command-prompt -1p'(jump forward)' 'send -X jump-forward "%%%"'
@@ -291,8 +387,8 @@ bind -Tcopy-mode-vi q send -X cancel
 bind -Tcopy-mode-vi t command-prompt -1p'(jump to forward)' 'send -X jump-to-forward "%%%"'
 bind -Tcopy-mode-vi v send -X rectangle-toggle
 bind -Tcopy-mode-vi w send -X next-word
-bind -Tcopy-mode-vi "{" send -X previous-paragraph
-bind -Tcopy-mode-vi "}" send -X next-paragraph
+bind -Tcopy-mode-vi { send -X previous-paragraph
+bind -Tcopy-mode-vi } send -X next-paragraph
 bind -Tcopy-mode-vi MouseDown1Pane select-pane
 bind -Tcopy-mode-vi MouseDrag1Pane select-pane\; send -X begin-selection
 bind -Tcopy-mode-vi MouseDragEnd1Pane send -X copy-selection-and-cancel
