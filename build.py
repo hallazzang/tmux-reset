@@ -7,23 +7,29 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 
 # Extracted from http://man7.org/linux/man-pages/man1/tmux.1.html#OPTIONS
 # Some options are ignored(see commented items)
-session_options = (
+server_options = (
     'buffer-limit',
     # 'command-alias',  # Ignored: is array
     'default-terminal',
     'escape-time',
+    'exit-empty',
     'exit-unattached',
     'focus-events',
     'history-file',
     'message-limit',
     'set-clipboard',
     # 'terminal-overrides',  # Ignored: is array
+    # 'user-keys',  # Ignored: is array
+)
+
+session_options = (
     'activity-action',
     'assume-paste-time',
     'base-index',
     'bell-action',
     'default-command',
     # 'default-shell',  # Ignored: to set $SHELL correctly
+    'default-size',
     'destroy-unattached',
     'detach-on-destroy',
     'display-panes-active-colour',
@@ -45,6 +51,7 @@ session_options = (
     'set-titles-string',
     'silence-action',
     'status',
+    # 'status-format'  # Ignored: is array
     'status-interval',
     'status-justify',
     'status-keys',
@@ -55,8 +62,8 @@ session_options = (
     'status-right',
     'status-right-length',
     'status-right-style',
+    'status-style',
     # 'update-environment',  # Ignored: is array
-    # 'user-keys',  # Ignored: is array
     'visual-activity',
     'visual-bell',
     'visual-silence',
@@ -65,16 +72,13 @@ session_options = (
 
 window_options = (
     'aggressive-resize',
-    'allow-rename',
-    'alternate-screen',
     'automatic-rename',
     'automatic-rename-format',
     'clock-mode-colour',
     'clock-mode-style',
-    'force-height',
-    'force-width',
     'main-pane-height',
     'main-pane-width',
+    'mode-keys',
     'mode-style',
     'monitor-activity',
     'monitor-bell',
@@ -86,9 +90,7 @@ window_options = (
     'pane-border-format',
     'pane-border-status',
     'pane-border-style',
-    'remain-on-exit',
     'synchronize-panes',
-    'window-active-style',
     'window-status-activity-style',
     'window-status-bell-style',
     'window-status-current-format',
@@ -97,12 +99,20 @@ window_options = (
     'window-status-last-style',
     'window-status-separator',
     'window-status-style',
-    'window-style',
+    'window-size',
     'wrap-search',
     'xterm-keys',
 )
 
-# Copied from https://github.com/tmux/tmux/blob/2.6/key-bindings.c
+pane_options = (
+    'allow-rename',
+    'alternate-screen',
+    'remain-on-exit',
+    'window-active-style',
+    'window-style',
+)
+
+# Copied from https://github.com/tmux/tmux/blob/2.9/key-bindings.c
 initial_key_bindings = (
     "bind C-b send-prefix",
     "bind C-o rotate-window",
@@ -111,13 +121,13 @@ initial_key_bindings = (
     "bind ! break-pane",
     "bind '\"' split-window",
     "bind '#' list-buffers",
-    "bind '$' command-prompt -I'#S' \"rename-session '%%'\"",
-    "bind \"%\" split-window -h",
-    "bind \"&\" confirm-before -p\"kill-window #W? (y/n)\" kill-window",
+    "bind '$' command-prompt -I'#S' \"rename-session -- '%%'\"",
+    "bind % split-window -h",
+    "bind & confirm-before -p\"kill-window #W? (y/n)\" kill-window",
     "bind \"'\" command-prompt -pindex \"select-window -t ':%%'\"",
-    "bind \"(\" switch-client -p",
-    "bind \")\" switch-client -n",
-    "bind , command-prompt -I'#W' \"rename-window '%%'\"",
+    "bind ( switch-client -p",
+    "bind ) switch-client -n",
+    "bind , command-prompt -I'#W' \"rename-window -- '%%'\"",
     "bind - delete-buffer",
     "bind . command-prompt \"move-window -t '%%'\"",
     "bind 0 select-window -t:=0",
@@ -132,16 +142,17 @@ initial_key_bindings = (
     "bind 9 select-window -t:=9",
     "bind : command-prompt",
     "bind \\; last-pane",
-    "bind = choose-buffer",
+    "bind = choose-buffer -Z",
     "bind ? list-keys",
-    "bind D choose-client",
+    "bind D choose-client -Z",
+    "bind E select-layout -E",
     "bind L switch-client -l",
     "bind M select-pane -M",
     "bind [ copy-mode",
     "bind ] paste-buffer",
     "bind c new-window",
     "bind d detach-client",
-    "bind f command-prompt \"find-window '%%'\"",
+    "bind f command-prompt \"find-window -Z -- '%%'\"",
     "bind i display-message",
     "bind l last-window",
     "bind m select-pane -m",
@@ -150,13 +161,13 @@ initial_key_bindings = (
     "bind p previous-window",
     "bind q display-panes",
     "bind r refresh-client",
-    "bind s choose-tree -s",
+    "bind s choose-tree -Zs",
     "bind t clock-mode",
-    "bind w choose-tree -w",
+    "bind w choose-tree -Zw",
     "bind x confirm-before -p\"kill-pane #P? (y/n)\" kill-pane",
     "bind z resize-pane -Z",
-    "bind \"{\" swap-pane -U",
-    "bind \"}\" swap-pane -D",
+    "bind { swap-pane -U",
+    "bind } swap-pane -D",
     "bind '~' show-messages",
     "bind PPage copy-mode -u",
     "bind -r Up select-pane -U",
@@ -171,6 +182,11 @@ initial_key_bindings = (
     "bind M-n next-window -a",
     "bind M-o rotate-window -D",
     "bind M-p previous-window -a",
+    "bind -r S-Up refresh-client -U 10",
+    "bind -r S-Down refresh-client -D 10",
+    "bind -r S-Left refresh-client -L 10",
+    "bind -r S-Right refresh-client -R 10",
+    "bind -r DC refresh-client -c",
     "bind -r M-Up resize-pane -U 5",
     "bind -r M-Down resize-pane -D 5",
     "bind -r M-Left resize-pane -L 5",
@@ -238,8 +254,8 @@ initial_key_bindings = (
     "bind -Tcopy-mode M-7 command-prompt -Np'(repeat)' -I7 'send -N \"%%%\"'",
     "bind -Tcopy-mode M-8 command-prompt -Np'(repeat)' -I8 'send -N \"%%%\"'",
     "bind -Tcopy-mode M-9 command-prompt -Np'(repeat)' -I9 'send -N \"%%%\"'",
-    "bind -Tcopy-mode \"M-<\" send -X history-top",
-    "bind -Tcopy-mode \"M->\" send -X history-bottom",
+    "bind -Tcopy-mode M-< send -X history-top",
+    "bind -Tcopy-mode M-> send -X history-bottom",
     "bind -Tcopy-mode M-R send -X top-line",
     "bind -Tcopy-mode M-b send -X previous-word",
     "bind -Tcopy-mode M-f send -X next-word-end",
@@ -247,8 +263,8 @@ initial_key_bindings = (
     "bind -Tcopy-mode M-r send -X middle-line",
     "bind -Tcopy-mode M-v send -X page-up",
     "bind -Tcopy-mode M-w send -X copy-selection-and-cancel",
-    "bind -Tcopy-mode \"M-{\" send -X previous-paragraph",
-    "bind -Tcopy-mode \"M-}\" send -X next-paragraph",
+    "bind -Tcopy-mode M-{ send -X previous-paragraph",
+    "bind -Tcopy-mode M-} send -X next-paragraph",
     "bind -Tcopy-mode M-Up send -X halfpage-up",
     "bind -Tcopy-mode M-Down send -X halfpage-down",
     "bind -Tcopy-mode C-Up send -X scroll-up",
@@ -297,7 +313,7 @@ initial_key_bindings = (
     "bind -Tcopy-mode-vi T command-prompt -1p'(jump to backward)' 'send -X jump-to-backward \"%%%\"'",
     "bind -Tcopy-mode-vi V send -X select-line",
     "bind -Tcopy-mode-vi W send -X next-space",
-    "bind -Tcopy-mode-vi \"^\" send -X back-to-indentation",
+    "bind -Tcopy-mode-vi ^ send -X back-to-indentation",
     "bind -Tcopy-mode-vi b send -X previous-word",
     "bind -Tcopy-mode-vi e send -X next-word-end",
     "bind -Tcopy-mode-vi f command-prompt -1p'(jump forward)' 'send -X jump-forward \"%%%\"'",
@@ -312,8 +328,8 @@ initial_key_bindings = (
     "bind -Tcopy-mode-vi t command-prompt -1p'(jump to forward)' 'send -X jump-to-forward \"%%%\"'",
     "bind -Tcopy-mode-vi v send -X rectangle-toggle",
     "bind -Tcopy-mode-vi w send -X next-word",
-    "bind -Tcopy-mode-vi \"{\" send -X previous-paragraph",
-    "bind -Tcopy-mode-vi \"}\" send -X next-paragraph",
+    "bind -Tcopy-mode-vi { send -X previous-paragraph",
+    "bind -Tcopy-mode-vi } send -X next-paragraph",
     "bind -Tcopy-mode-vi MouseDown1Pane select-pane",
     "bind -Tcopy-mode-vi MouseDrag1Pane select-pane\\; send -X begin-selection",
     "bind -Tcopy-mode-vi MouseDragEnd1Pane send -X copy-selection-and-cancel",
@@ -343,20 +359,26 @@ if __name__ == '__main__':
     if args.tpm:
         prefix = 'tmux '
         filename += '.tmux'
-        header = """#!/usr/bin/env bash
+        header = '''#!/usr/bin/env bash
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-"""
+'''
 
     with open(os.path.join(script_dir, filename), 'w') as f:
         if args.tpm:
             f.write('%s\n' % header)
 
+        for option_name in server_options:
+            f.write('%sset-option -ugs %s\n' % (prefix, option_name))
+
         for option_name in session_options:
             f.write('%sset-option -ug %s\n' % (prefix, option_name))
 
         for option_name in window_options:
-            f.write('%sset-window-option -ug %s\n' % (prefix, option_name))
+            f.write('%sset-option -ugw %s\n' % (prefix, option_name))
+
+        for option_name in pane_options:
+            f.write('%sset-option -ugp %s\n' % (prefix, option_name))
 
         f.write('%sunbind-key -a\n' % prefix)
 
