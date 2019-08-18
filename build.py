@@ -368,17 +368,10 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
         if args.tpm:
             f.write('%s\n' % header)
 
-        for option_name in server_options:
-            f.write('%sset-option -ugs %s\n' % (prefix, option_name))
-
-        for option_name in session_options:
+        options = server_options + session_options + window_options + pane_options
+        for option_name in options:
             f.write('%sset-option -ug %s\n' % (prefix, option_name))
-
-        for option_name in window_options:
-            f.write('%sset-option -ugw %s\n' % (prefix, option_name))
-
-        for option_name in pane_options:
-            f.write('%sset-option -ugp %s\n' % (prefix, option_name))
+            f.write('%sset-option -u %s\n' % (prefix, option_name))
 
         f.write('%sunbind-key -a\n' % prefix)
 
