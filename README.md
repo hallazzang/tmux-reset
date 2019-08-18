@@ -11,6 +11,18 @@ From clean state, you can apply any changes to your tmux as usual.
 
 ## Installation
 
+There are two ways to install and activate this script.
+
+### Using TPM
+
+Add this line in your `.tmux.conf`:
+
+```tmux
+set -g @plugin 'hallazzang/tmux-reset'
+```
+
+### Manual Installation
+
 1. Download [tmux-reset] file and put it in somewhere, for example, `~/.tmux/reset`:
     ```bash
     $ curl -Lo ~/.tmux/reset --create-dirs \
