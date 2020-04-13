@@ -2,6 +2,7 @@
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+tmux set-option -ug backspace
 tmux set-option -ug buffer-limit
 tmux set-option -ug default-terminal
 tmux set-option -ug escape-time

@@ -1,6 +1,6 @@
 # tmux-reset
 
-Easy way to reset all options to default in tmux(3.0a)
+Easy way to reset all options to default in tmux(3.0)
 
 ## What is it?
 

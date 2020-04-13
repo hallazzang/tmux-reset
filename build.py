@@ -10,6 +10,7 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 # Extracted from http://man7.org/linux/man-pages/man1/tmux.1.html#OPTIONS
 # Some options are ignored(see commented items)
 server_options = (
+    "backspace",
     "buffer-limit",
     # 'command-alias',  # Ignored: is array
     "default-terminal",
