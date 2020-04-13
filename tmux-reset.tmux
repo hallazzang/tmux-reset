@@ -2,6 +2,8 @@
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 
+tmux set-option -ug backspace
+tmux set-option -u backspace
 tmux set-option -ug buffer-limit
 tmux set-option -u buffer-limit
 tmux set-option -ug default-terminal

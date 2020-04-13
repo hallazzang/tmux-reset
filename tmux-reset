@@ -1,3 +1,5 @@
+set-option -ug backspace
+set-option -u backspace
 set-option -ug buffer-limit
 set-option -u buffer-limit
 set-option -ug default-terminal
