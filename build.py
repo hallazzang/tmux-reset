@@ -5,111 +5,113 @@ import argparse
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
+# TODO: We can lookup https://github.com/tmux/tmux/blob/3.0/options-table.c#L143
+
 # Extracted from http://man7.org/linux/man-pages/man1/tmux.1.html#OPTIONS
 # Some options are ignored(see commented items)
 server_options = (
-    'buffer-limit',
+    "buffer-limit",
     # 'command-alias',  # Ignored: is array
-    'default-terminal',
-    'escape-time',
-    'exit-empty',
-    'exit-unattached',
-    'focus-events',
-    'history-file',
-    'message-limit',
-    'set-clipboard',
+    "default-terminal",
+    "escape-time",
+    "exit-empty",
+    "exit-unattached",
+    "focus-events",
+    "history-file",
+    "message-limit",
+    "set-clipboard",
     # 'terminal-overrides',  # Ignored: is array
     # 'user-keys',  # Ignored: is array
 )
 
 session_options = (
-    'activity-action',
-    'assume-paste-time',
-    'base-index',
-    'bell-action',
-    'default-command',
+    "activity-action",
+    "assume-paste-time",
+    "base-index",
+    "bell-action",
+    "default-command",
     # 'default-shell',  # Ignored: to set $SHELL correctly
-    'default-size',
-    'destroy-unattached',
-    'detach-on-destroy',
-    'display-panes-active-colour',
-    'display-panes-colour',
-    'display-panes-time',
-    'display-time',
-    'history-limit',
-    'key-table',
-    'lock-after-time',
-    'lock-command',
-    'message-command-style',
-    'message-style',
-    'mouse',
-    'prefix',
-    'prefix2',
-    'renumber-windows',
-    'repeat-time',
-    'set-titles',
-    'set-titles-string',
-    'silence-action',
-    'status',
+    "default-size",
+    "destroy-unattached",
+    "detach-on-destroy",
+    "display-panes-active-colour",
+    "display-panes-colour",
+    "display-panes-time",
+    "display-time",
+    "history-limit",
+    "key-table",
+    "lock-after-time",
+    "lock-command",
+    "message-command-style",
+    "message-style",
+    "mouse",
+    "prefix",
+    "prefix2",
+    "renumber-windows",
+    "repeat-time",
+    "set-titles",
+    "set-titles-string",
+    "silence-action",
+    "status",
     # 'status-format'  # Ignored: is array
-    'status-interval',
-    'status-justify',
-    'status-keys',
-    'status-left',
-    'status-left-length',
-    'status-left-style',
-    'status-position',
-    'status-right',
-    'status-right-length',
-    'status-right-style',
-    'status-style',
+    "status-interval",
+    "status-justify",
+    "status-keys",
+    "status-left",
+    "status-left-length",
+    "status-left-style",
+    "status-position",
+    "status-right",
+    "status-right-length",
+    "status-right-style",
+    "status-style",
     # 'update-environment',  # Ignored: is array
-    'visual-activity',
-    'visual-bell',
-    'visual-silence',
-    'word-separators',
+    "visual-activity",
+    "visual-bell",
+    "visual-silence",
+    "word-separators",
 )
 
 window_options = (
-    'aggressive-resize',
-    'automatic-rename',
-    'automatic-rename-format',
-    'clock-mode-colour',
-    'clock-mode-style',
-    'main-pane-height',
-    'main-pane-width',
-    'mode-keys',
-    'mode-style',
-    'monitor-activity',
-    'monitor-bell',
-    'monitor-silence',
-    'other-pane-height',
-    'other-pane-width',
-    'pane-active-border-style',
-    'pane-base-index',
-    'pane-border-format',
-    'pane-border-status',
-    'pane-border-style',
-    'synchronize-panes',
-    'window-status-activity-style',
-    'window-status-bell-style',
-    'window-status-current-format',
-    'window-status-current-style',
-    'window-status-format',
-    'window-status-last-style',
-    'window-status-separator',
-    'window-status-style',
-    'window-size',
-    'wrap-search',
-    'xterm-keys',
+    "aggressive-resize",
+    "automatic-rename",
+    "automatic-rename-format",
+    "clock-mode-colour",
+    "clock-mode-style",
+    "main-pane-height",
+    "main-pane-width",
+    "mode-keys",
+    "mode-style",
+    "monitor-activity",
+    "monitor-bell",
+    "monitor-silence",
+    "other-pane-height",
+    "other-pane-width",
+    "pane-active-border-style",
+    "pane-base-index",
+    "pane-border-format",
+    "pane-border-status",
+    "pane-border-style",
+    "synchronize-panes",
+    "window-status-activity-style",
+    "window-status-bell-style",
+    "window-status-current-format",
+    "window-status-current-style",
+    "window-status-format",
+    "window-status-last-style",
+    "window-status-separator",
+    "window-status-style",
+    "window-size",
+    "wrap-search",
+    "xterm-keys",
 )
 
 pane_options = (
-    'allow-rename',
-    'alternate-screen',
-    'remain-on-exit',
-    'window-active-style',
-    'window-style',
+    "allow-rename",
+    "alternate-screen",
+    "remain-on-exit",
+    "window-active-style",
+    "window-style",
 )
 
 # Copied from https://github.com/tmux/tmux/blob/2.9/key-bindings.c
@@ -123,8 +125,8 @@ initial_key_bindings = (
     "bind '#' list-buffers",
     "bind '$' command-prompt -I'#S' \"rename-session -- '%%'\"",
     "bind % split-window -h",
-    "bind & confirm-before -p\"kill-window #W? (y/n)\" kill-window",
-    "bind \"'\" command-prompt -pindex \"select-window -t ':%%'\"",
+    'bind & confirm-before -p"kill-window #W? (y/n)" kill-window',
+    'bind "\'" command-prompt -pindex "select-window -t \':%%\'"',
     "bind ( switch-client -p",
     "bind ) switch-client -n",
     "bind , command-prompt -I'#W' \"rename-window -- '%%'\"",
@@ -164,10 +166,10 @@ initial_key_bindings = (
     "bind s choose-tree -Zs",
     "bind t clock-mode",
     "bind w choose-tree -Zw",
-    "bind x confirm-before -p\"kill-pane #P? (y/n)\" kill-pane",
+    'bind x confirm-before -p"kill-pane #P? (y/n)" kill-pane',
     "bind z resize-pane -Z",
-    "bind { swap-pane -U",
-    "bind } swap-pane -D",
+    "bind '{' swap-pane -U",
+    "bind '}' swap-pane -D",
     "bind '~' show-messages",
     "bind PPage copy-mode -u",
     "bind -r Up select-pane -U",
@@ -201,8 +203,98 @@ initial_key_bindings = (
     "bind -n WheelDownStatus next-window",
     "bind -n WheelUpStatus previous-window",
     "bind -n MouseDrag1Pane if -Ft= '#{mouse_any_flag}' 'if -Ft= \"#{pane_in_mode}\" \"copy-mode -M\" \"send-keys -M\"' 'copy-mode -M'",
-    "bind -n MouseDown3Pane if-shell -Ft= '#{mouse_any_flag}' 'select-pane -t=; send-keys -M' 'select-pane -mt='",
-    "bind -n WheelUpPane if-shell -Ft= '#{mouse_any_flag}' 'send-keys -M' 'if -Ft= \"#{pane_in_mode}\" \"send-keys -M\" \"copy-mode -et=\"'",
+    "bind -n WheelUpPane if -Ft= '#{mouse_any_flag}' 'send-keys -M' 'if -Ft= \"#{pane_in_mode}\" \"send-keys -M\" \"copy-mode -et=\"'",
+    'bind -n MouseDown3StatusRight display-menu -t= -xM -yS -T "#[align=centre]#{client_name}" '
+    " 'Detach' 'd' {detach-client}"
+    " 'Detach & Kill' 'X' {detach-client -P}"
+    " 'Detach Others' 'o' {detach-client -a}"
+    " ''"
+    " 'Lock' 'l' {lock-client}",
+    'bind -n MouseDown3StatusLeft display-menu -t= -xM -yS -T "#[align=centre]#{session_name}" '
+    " 'Next' 'n' {switch-client -n}"
+    " 'Previous' 'p' {switch-client -p}"
+    " ''"
+    " 'Renumber' 'N' {move-window -r}"
+    " 'Rename' 'n' {command-prompt -I \"#S\" \"rename-session -- '%%'\"}"
+    " ''"
+    " 'New Session' 's' {new-session}"
+    " 'New Window' 'w' {new-window}",
+    'bind -n MouseDown3Status display-menu -t= -xW -yS -T "#[align=centre]#{window_index}:#{window_name}" '
+    " 'Swap Left' 'l' {swap-window -t:-1}"
+    " 'Swap Right' 'r' {swap-window -t:+1}"
+    " '#{?pane_marked_set,,-}Swap Marked' 's' {swap-window}"
+    " ''"
+    " 'Kill' 'X' {kill-window}"
+    " 'Respawn' 'R' {respawn-window -k}"
+    " '#{?pane_marked,Unmark,Mark}' 'm' {select-pane -m}"
+    " 'Rename' 'n' {command-prompt -I \"#W\" \"rename-window -- '%%'\"}"
+    " ''"
+    " 'New After' 'w' {new-window -a}"
+    " 'New At End' 'W' {new-window}",
+    'bind < display-menu -xW -yS -T "#[align=centre]#{window_index}:#{window_name}" '
+    " 'Swap Left' 'l' {swap-window -t:-1}"
+    " 'Swap Right' 'r' {swap-window -t:+1}"
+    " '#{?pane_marked_set,,-}Swap Marked' 's' {swap-window}"
+    " ''"
+    " 'Kill' 'X' {kill-window}"
+    " 'Respawn' 'R' {respawn-window -k}"
+    " '#{?pane_marked,Unmark,Mark}' 'm' {select-pane -m}"
+    " 'Rename' 'n' {command-prompt -I \"#W\" \"rename-window -- '%%'\"}"
+    " ''"
+    " 'New After' 'w' {new-window -a}"
+    " 'New At End' 'W' {new-window}",
+    "bind -n MouseDown3Pane if -Ft= '#{||:#{mouse_any_flag},#{pane_in_mode}}' 'select-pane -t=; send-keys -M' {display-menu -t= -xM -yM -T \"#[align=centre]#{pane_index} (#{pane_id})\" "
+    " '#{?mouse_word,Search For #[underscore]#{=/9/...:mouse_word},}' 'C-r' {copy-mode -t=; send -Xt= search-backward \"#{q:mouse_word}\"}"
+    " '#{?mouse_word,Type #[underscore]#{=/9/...:mouse_word},}' 'C-y' {send-keys -l -- \"#{q:mouse_word}\"}"
+    " '#{?mouse_word,Copy #[underscore]#{=/9/...:mouse_word},}' 'c' {set-buffer -- \"#{q:mouse_word}\"}"
+    " '#{?mouse_line,Copy Line,}' 'l' {set-buffer -- \"#{q:mouse_line}\"}"
+    " ''"
+    " 'Horizontal Split' 'h' {split-window -h}"
+    " 'Vertical Split' 'v' {split-window -v}"
+    " ''"
+    " 'Swap Up' 'u' {swap-pane -U}"
+    " 'Swap Down' 'd' {swap-pane -D}"
+    " '#{?pane_marked_set,,-}Swap Marked' 's' {swap-pane}"
+    " ''"
+    " 'Kill' 'X' {kill-pane}"
+    " 'Respawn' 'R' {respawn-pane -k}"
+    " '#{?pane_marked,Unmark,Mark}' 'm' {select-pane -m}"
+    " '#{?window_zoomed_flag,Unzoom,Zoom}' 'z' {resize-pane -Z}"
+    "}",
+    'bind -n M-MouseDown3Pane display-menu -t= -xM -yM -T "#[align=centre]#{pane_index} (#{pane_id})" '
+    " '#{?mouse_word,Search For #[underscore]#{=/9/...:mouse_word},}' 'C-r' {copy-mode -t=; send -Xt= search-backward \"#{q:mouse_word}\"}"
+    " '#{?mouse_word,Type #[underscore]#{=/9/...:mouse_word},}' 'C-y' {send-keys -l -- \"#{q:mouse_word}\"}"
+    " '#{?mouse_word,Copy #[underscore]#{=/9/...:mouse_word},}' 'c' {set-buffer -- \"#{q:mouse_word}\"}"
+    " '#{?mouse_line,Copy Line,}' 'l' {set-buffer -- \"#{q:mouse_line}\"}"
+    " ''"
+    " 'Horizontal Split' 'h' {split-window -h}"
+    " 'Vertical Split' 'v' {split-window -v}"
+    " ''"
+    " 'Swap Up' 'u' {swap-pane -U}"
+    " 'Swap Down' 'd' {swap-pane -D}"
+    " '#{?pane_marked_set,,-}Swap Marked' 's' {swap-pane}"
+    " ''"
+    " 'Kill' 'X' {kill-pane}"
+    " 'Respawn' 'R' {respawn-pane -k}"
+    " '#{?pane_marked,Unmark,Mark}' 'm' {select-pane -m}"
+    " '#{?window_zoomed_flag,Unzoom,Zoom}' 'z' {resize-pane -Z}",
+    'bind > display-menu -xP -yP -T "#[align=centre]#{pane_index} (#{pane_id})" '
+    " '#{?mouse_word,Search For #[underscore]#{=/9/...:mouse_word},}' 'C-r' {copy-mode -t=; send -Xt= search-backward \"#{q:mouse_word}\"}"
+    " '#{?mouse_word,Type #[underscore]#{=/9/...:mouse_word},}' 'C-y' {send-keys -l -- \"#{q:mouse_word}\"}"
+    " '#{?mouse_word,Copy #[underscore]#{=/9/...:mouse_word},}' 'c' {set-buffer -- \"#{q:mouse_word}\"}"
+    " '#{?mouse_line,Copy Line,}' 'l' {set-buffer -- \"#{q:mouse_line}\"}"
+    " ''"
+    " 'Horizontal Split' 'h' {split-window -h}"
+    " 'Vertical Split' 'v' {split-window -v}"
+    " ''"
+    " 'Swap Up' 'u' {swap-pane -U}"
+    " 'Swap Down' 'd' {swap-pane -D}"
+    " '#{?pane_marked_set,,-}Swap Marked' 's' {swap-pane}"
+    " ''"
+    " 'Kill' 'X' {kill-pane}"
+    " 'Respawn' 'R' {respawn-pane -k}"
+    " '#{?pane_marked,Unmark,Mark}' 'm' {select-pane -m}"
+    " '#{?window_zoomed_flag,Unzoom,Zoom}' 'z' {resize-pane -Z}",
     "bind -Tcopy-mode C-Space send -X begin-selection",
     "bind -Tcopy-mode C-a send -X start-of-line",
     "bind -Tcopy-mode C-c send -X cancel",
@@ -258,13 +350,15 @@ initial_key_bindings = (
     "bind -Tcopy-mode M-> send -X history-bottom",
     "bind -Tcopy-mode M-R send -X top-line",
     "bind -Tcopy-mode M-b send -X previous-word",
+    "bind -Tcopy-mode C-M-b send -X previous-matching-bracket",
     "bind -Tcopy-mode M-f send -X next-word-end",
+    "bind -Tcopy-mode C-M-f send -X next-matching-bracket",
     "bind -Tcopy-mode M-m send -X back-to-indentation",
     "bind -Tcopy-mode M-r send -X middle-line",
     "bind -Tcopy-mode M-v send -X page-up",
     "bind -Tcopy-mode M-w send -X copy-selection-and-cancel",
-    "bind -Tcopy-mode M-{ send -X previous-paragraph",
-    "bind -Tcopy-mode M-} send -X next-paragraph",
+    "bind -Tcopy-mode 'M-{' send -X previous-paragraph",
+    "bind -Tcopy-mode 'M-}' send -X next-paragraph",
     "bind -Tcopy-mode M-Up send -X halfpage-up",
     "bind -Tcopy-mode M-Down send -X halfpage-down",
     "bind -Tcopy-mode C-Up send -X scroll-up",
@@ -328,8 +422,9 @@ initial_key_bindings = (
     "bind -Tcopy-mode-vi t command-prompt -1p'(jump to forward)' 'send -X jump-to-forward \"%%%\"'",
     "bind -Tcopy-mode-vi v send -X rectangle-toggle",
     "bind -Tcopy-mode-vi w send -X next-word",
-    "bind -Tcopy-mode-vi { send -X previous-paragraph",
-    "bind -Tcopy-mode-vi } send -X next-paragraph",
+    "bind -Tcopy-mode-vi '{' send -X previous-paragraph",
+    "bind -Tcopy-mode-vi '}' send -X next-paragraph",
+    "bind -Tcopy-mode-vi % send -X next-matching-bracket",
     "bind -Tcopy-mode-vi MouseDown1Pane select-pane",
     "bind -Tcopy-mode-vi MouseDrag1Pane select-pane\\; send -X begin-selection",
     "bind -Tcopy-mode-vi MouseDragEnd1Pane send -X copy-selection-and-cancel",
@@ -348,34 +443,39 @@ initial_key_bindings = (
     "bind -Tcopy-mode-vi C-Down send -X scroll-down",
 )
 
-if __name__ == '__main__':
-    prefix = ''
-    filename = 'tmux-reset'
+if __name__ == "__main__":
+    prefix = ""
+    filename = "tmux-reset"
 
-    parser = argparse.ArgumentParser(description='Creates a tmux-reset config')
-    parser.add_argument('-t', '--tpm', action="store_true", help='build for .tmux file for TPM compatibility')
+    parser = argparse.ArgumentParser(description="Creates a tmux-reset config")
+    parser.add_argument(
+        "-t",
+        "--tpm",
+        action="store_true",
+        help="build for .tmux file for TPM compatibility",
+    )
     args = parser.parse_args()
 
     if args.tpm:
-        prefix = 'tmux '
-        filename += '.tmux'
-        header = '''#!/usr/bin/env bash
+        prefix = "tmux "
+        filename += ".tmux"
+        header = """#!/usr/bin/env bash
 
 CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-'''
+"""
 
-    with open(os.path.join(script_dir, filename), 'w') as f:
+    with open(os.path.join(script_dir, filename), "w") as f:
         if args.tpm:
-            f.write('%s\n' % header)
+            f.write("%s\n" % header)
 
         options = server_options + session_options + window_options + pane_options
         for option_name in options:
-            f.write('%sset-option -ug %s\n' % (prefix, option_name))
-            f.write('%sset-option -u %s\n' % (prefix, option_name))
+            f.write("%sset-option -ug %s\n" % (prefix, option_name))
+            f.write("%sset-option -u %s\n" % (prefix, option_name))
 
-        f.write('%sunbind-key -a\n' % prefix)
+        f.write("%sunbind-key -a\n" % prefix)
 
         for binding in initial_key_bindings:
             if args.tpm:
-                binding = binding.replace(" \\; ", " \"\\;\" ")
-            f.write('%s%s\n' % (prefix, binding))
+                binding = binding.replace(" \\; ", ' "\\;" ')
+            f.write("%s%s\n" % (prefix, binding))

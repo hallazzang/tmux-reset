@@ -229,8 +229,8 @@ tmux bind t clock-mode
 tmux bind w choose-tree -Zw
 tmux bind x confirm-before -p"kill-pane #P? (y/n)" kill-pane
 tmux bind z resize-pane -Z
-tmux bind { swap-pane -U
-tmux bind } swap-pane -D
+tmux bind '{' swap-pane -U
+tmux bind '}' swap-pane -D
 tmux bind '~' show-messages
 tmux bind PPage copy-mode -u
 tmux bind -r Up select-pane -U
@@ -264,8 +264,14 @@ tmux bind -n MouseDown1Status select-window -t=
 tmux bind -n WheelDownStatus next-window
 tmux bind -n WheelUpStatus previous-window
 tmux bind -n MouseDrag1Pane if -Ft= '#{mouse_any_flag}' 'if -Ft= "#{pane_in_mode}" "copy-mode -M" "send-keys -M"' 'copy-mode -M'
-tmux bind -n MouseDown3Pane if-shell -Ft= '#{mouse_any_flag}' 'select-pane -t=; send-keys -M' 'select-pane -mt='
-tmux bind -n WheelUpPane if-shell -Ft= '#{mouse_any_flag}' 'send-keys -M' 'if -Ft= "#{pane_in_mode}" "send-keys -M" "copy-mode -et="'
+tmux bind -n WheelUpPane if -Ft= '#{mouse_any_flag}' 'send-keys -M' 'if -Ft= "#{pane_in_mode}" "send-keys -M" "copy-mode -et="'
+tmux bind -n MouseDown3StatusRight display-menu -t= -xM -yS -T "#[align=centre]#{client_name}"  'Detach' 'd' {detach-client} 'Detach & Kill' 'X' {detach-client -P} 'Detach Others' 'o' {detach-client -a} '' 'Lock' 'l' {lock-client}
+tmux bind -n MouseDown3StatusLeft display-menu -t= -xM -yS -T "#[align=centre]#{session_name}"  'Next' 'n' {switch-client -n} 'Previous' 'p' {switch-client -p} '' 'Renumber' 'N' {move-window -r} 'Rename' 'n' {command-prompt -I "#S" "rename-session -- '%%'"} '' 'New Session' 's' {new-session} 'New Window' 'w' {new-window}
+tmux bind -n MouseDown3Status display-menu -t= -xW -yS -T "#[align=centre]#{window_index}:#{window_name}"  'Swap Left' 'l' {swap-window -t:-1} 'Swap Right' 'r' {swap-window -t:+1} '#{?pane_marked_set,,-}Swap Marked' 's' {swap-window} '' 'Kill' 'X' {kill-window} 'Respawn' 'R' {respawn-window -k} '#{?pane_marked,Unmark,Mark}' 'm' {select-pane -m} 'Rename' 'n' {command-prompt -I "#W" "rename-window -- '%%'"} '' 'New After' 'w' {new-window -a} 'New At End' 'W' {new-window}
+tmux bind < display-menu -xW -yS -T "#[align=centre]#{window_index}:#{window_name}"  'Swap Left' 'l' {swap-window -t:-1} 'Swap Right' 'r' {swap-window -t:+1} '#{?pane_marked_set,,-}Swap Marked' 's' {swap-window} '' 'Kill' 'X' {kill-window} 'Respawn' 'R' {respawn-window -k} '#{?pane_marked,Unmark,Mark}' 'm' {select-pane -m} 'Rename' 'n' {command-prompt -I "#W" "rename-window -- '%%'"} '' 'New After' 'w' {new-window -a} 'New At End' 'W' {new-window}
+tmux bind -n MouseDown3Pane if -Ft= '#{||:#{mouse_any_flag},#{pane_in_mode}}' 'select-pane -t=; send-keys -M' {display-menu -t= -xM -yM -T "#[align=centre]#{pane_index} (#{pane_id})"  '#{?mouse_word,Search For #[underscore]#{=/9/...:mouse_word},}' 'C-r' {copy-mode -t=; send -Xt= search-backward "#{q:mouse_word}"} '#{?mouse_word,Type #[underscore]#{=/9/...:mouse_word},}' 'C-y' {send-keys -l -- "#{q:mouse_word}"} '#{?mouse_word,Copy #[underscore]#{=/9/...:mouse_word},}' 'c' {set-buffer -- "#{q:mouse_word}"} '#{?mouse_line,Copy Line,}' 'l' {set-buffer -- "#{q:mouse_line}"} '' 'Horizontal Split' 'h' {split-window -h} 'Vertical Split' 'v' {split-window -v} '' 'Swap Up' 'u' {swap-pane -U} 'Swap Down' 'd' {swap-pane -D} '#{?pane_marked_set,,-}Swap Marked' 's' {swap-pane} '' 'Kill' 'X' {kill-pane} 'Respawn' 'R' {respawn-pane -k} '#{?pane_marked,Unmark,Mark}' 'm' {select-pane -m} '#{?window_zoomed_flag,Unzoom,Zoom}' 'z' {resize-pane -Z}}
+tmux bind -n M-MouseDown3Pane display-menu -t= -xM -yM -T "#[align=centre]#{pane_index} (#{pane_id})"  '#{?mouse_word,Search For #[underscore]#{=/9/...:mouse_word},}' 'C-r' {copy-mode -t=; send -Xt= search-backward "#{q:mouse_word}"} '#{?mouse_word,Type #[underscore]#{=/9/...:mouse_word},}' 'C-y' {send-keys -l -- "#{q:mouse_word}"} '#{?mouse_word,Copy #[underscore]#{=/9/...:mouse_word},}' 'c' {set-buffer -- "#{q:mouse_word}"} '#{?mouse_line,Copy Line,}' 'l' {set-buffer -- "#{q:mouse_line}"} '' 'Horizontal Split' 'h' {split-window -h} 'Vertical Split' 'v' {split-window -v} '' 'Swap Up' 'u' {swap-pane -U} 'Swap Down' 'd' {swap-pane -D} '#{?pane_marked_set,,-}Swap Marked' 's' {swap-pane} '' 'Kill' 'X' {kill-pane} 'Respawn' 'R' {respawn-pane -k} '#{?pane_marked,Unmark,Mark}' 'm' {select-pane -m} '#{?window_zoomed_flag,Unzoom,Zoom}' 'z' {resize-pane -Z}
+tmux bind > display-menu -xP -yP -T "#[align=centre]#{pane_index} (#{pane_id})"  '#{?mouse_word,Search For #[underscore]#{=/9/...:mouse_word},}' 'C-r' {copy-mode -t=; send -Xt= search-backward "#{q:mouse_word}"} '#{?mouse_word,Type #[underscore]#{=/9/...:mouse_word},}' 'C-y' {send-keys -l -- "#{q:mouse_word}"} '#{?mouse_word,Copy #[underscore]#{=/9/...:mouse_word},}' 'c' {set-buffer -- "#{q:mouse_word}"} '#{?mouse_line,Copy Line,}' 'l' {set-buffer -- "#{q:mouse_line}"} '' 'Horizontal Split' 'h' {split-window -h} 'Vertical Split' 'v' {split-window -v} '' 'Swap Up' 'u' {swap-pane -U} 'Swap Down' 'd' {swap-pane -D} '#{?pane_marked_set,,-}Swap Marked' 's' {swap-pane} '' 'Kill' 'X' {kill-pane} 'Respawn' 'R' {respawn-pane -k} '#{?pane_marked,Unmark,Mark}' 'm' {select-pane -m} '#{?window_zoomed_flag,Unzoom,Zoom}' 'z' {resize-pane -Z}
 tmux bind -Tcopy-mode C-Space send -X begin-selection
 tmux bind -Tcopy-mode C-a send -X start-of-line
 tmux bind -Tcopy-mode C-c send -X cancel
@@ -321,13 +327,15 @@ tmux bind -Tcopy-mode M-< send -X history-top
 tmux bind -Tcopy-mode M-> send -X history-bottom
 tmux bind -Tcopy-mode M-R send -X top-line
 tmux bind -Tcopy-mode M-b send -X previous-word
+tmux bind -Tcopy-mode C-M-b send -X previous-matching-bracket
 tmux bind -Tcopy-mode M-f send -X next-word-end
+tmux bind -Tcopy-mode C-M-f send -X next-matching-bracket
 tmux bind -Tcopy-mode M-m send -X back-to-indentation
 tmux bind -Tcopy-mode M-r send -X middle-line
 tmux bind -Tcopy-mode M-v send -X page-up
 tmux bind -Tcopy-mode M-w send -X copy-selection-and-cancel
-tmux bind -Tcopy-mode M-{ send -X previous-paragraph
-tmux bind -Tcopy-mode M-} send -X next-paragraph
+tmux bind -Tcopy-mode 'M-{' send -X previous-paragraph
+tmux bind -Tcopy-mode 'M-}' send -X next-paragraph
 tmux bind -Tcopy-mode M-Up send -X halfpage-up
 tmux bind -Tcopy-mode M-Down send -X halfpage-down
 tmux bind -Tcopy-mode C-Up send -X scroll-up
@@ -391,8 +399,9 @@ tmux bind -Tcopy-mode-vi q send -X cancel
 tmux bind -Tcopy-mode-vi t command-prompt -1p'(jump to forward)' 'send -X jump-to-forward "%%%"'
 tmux bind -Tcopy-mode-vi v send -X rectangle-toggle
 tmux bind -Tcopy-mode-vi w send -X next-word
-tmux bind -Tcopy-mode-vi { send -X previous-paragraph
-tmux bind -Tcopy-mode-vi } send -X next-paragraph
+tmux bind -Tcopy-mode-vi '{' send -X previous-paragraph
+tmux bind -Tcopy-mode-vi '}' send -X next-paragraph
+tmux bind -Tcopy-mode-vi % send -X next-matching-bracket
 tmux bind -Tcopy-mode-vi MouseDown1Pane select-pane
 tmux bind -Tcopy-mode-vi MouseDrag1Pane select-pane\; send -X begin-selection
 tmux bind -Tcopy-mode-vi MouseDragEnd1Pane send -X copy-selection-and-cancel
