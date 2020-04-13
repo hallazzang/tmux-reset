@@ -26,7 +26,7 @@ set -g @plugin 'hallazzang/tmux-reset'
 1. Download [tmux-reset] file and put it in somewhere, for example, `~/.tmux/reset`:
     ```bash
     $ curl -Lo ~/.tmux/reset --create-dirs \
-        https://raw.githubusercontent.com/hallazzang/tmux-reset/2.9/tmux-reset
+        https://raw.githubusercontent.com/hallazzang/tmux-reset/3.0/tmux-reset
     ```
 
 2. Include this line at the top of your `.tmux.conf`:
@@ -38,5 +38,15 @@ set -g @plugin 'hallazzang/tmux-reset'
 That's it. Now whenever you reload your `.tmux.conf`,
 you don't need to kill your tmux server and restart it to reset options.
 
-[default-key-bindings]: https://github.com/tmux/tmux/blob/2.9/key-bindings.c#L192-L426
-[tmux-reset]: https://github.com/hallazzang/tmux-reset/blob/2.9/tmux-reset
+## Alternative Versions
+
+If you're using other version of tmux, please check [tags].
+
+Here are currently supported versions:
+
+- [3.0](https://github.com/hallazzang/tmux-reset/tree/3.0)
+- [3.0a](https://github.com/hallazzang/tmux-reset/tree/3.0a)
+- [2.9](https://github.com/hallazzang/tmux-reset/tree/2.9)
+
+[tags]: https://github.com/hallazzang/tmux-reset/tags
+[tmux-reset]: https://github.com/hallazzang/tmux-reset/blob/3.0/tmux-reset
