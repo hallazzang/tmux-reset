@@ -10,7 +10,6 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 # Extracted from http://man7.org/linux/man-pages/man1/tmux.1.html#OPTIONS
 # Some options are ignored(see commented items)
 server_options = (
-    "backspace",
     "buffer-limit",
     # 'command-alias',  # Ignored: is array
     "default-terminal",
@@ -472,7 +471,6 @@ CURRENT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
         options = server_options + session_options + window_options + pane_options
         for option_name in options:
             f.write("%sset-option -ug %s\n" % (prefix, option_name))
-            f.write("%sset-option -u %s\n" % (prefix, option_name))
 
         f.write("%sunbind-key -a\n" % prefix)
 
